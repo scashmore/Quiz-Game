@@ -1,29 +1,35 @@
 //Array of question, chioces, and answers
-var questions= [{
+var questions = [{
 
     question: "What currecny is used in Animal Crossing?",
     choices: ["Bells", "Rupees", "Gold", "Coins"],
-    answer: "Bells"},
+    answer: "Bells"
+},
 {
     question: "Who will yell at you for not saving your game?",
     choices: ["Isabelle", "Harriet", "Resetti", "Blathers"],
-    answer: "Resetti"},
+    answer: "Resetti"
+},
 {
     question: "All of these modes of major transpertation appear in the Animal Crossing series except:",
     choices: ["Plane", "Subway", "Train", "Boat"],
-    answer: "Subway"},
+    answer: "Subway"
+},
 {
     question: "What type of animals sell you clothes and fancy accesories?",
     choices: ["Skunks", "Hedgehogs", "Racoons", "Frogs"],
-    answer: "Hedgehogs"},
+    answer: "Hedgehogs"
+},
 {
     question: "This cool dog is the game's top DJ.",
     choices: ["K.K Slider", "Digby", "Goldie", "Booker"],
-    answer: "K.K Slider"},
+    answer: "K.K Slider"
+},
 {
     question: "Which character must you pay in order to own your house?",
     choices: ["Luna", "Harvey", "Gracie", "Tom Nook"],
-    answer: "Tom Nook"}
+    answer: "Tom Nook"
+}
 ];
 
 // variable setup
@@ -32,7 +38,9 @@ var timer = document.getElementById("timer");
 var container = document.getElementById("box1");
 var startQuiz = document.getElementById("start");
 var resetQuiz = document.getElementById("reset");
+var score = document.getElementById("score");
 var counter = 0
+var initials = document.getElementById("initials")
 
 //functions
 
@@ -49,6 +57,7 @@ function countDown(duration) {
     }, 1000);
 }
 
+//quiz function
 function quizPlaying() {
     var questionOutput = [];
     var possibleAnswers;
@@ -57,7 +66,7 @@ function quizPlaying() {
     console.log("here");
     //give choices for question[counter]
     document.getElementById("showQuestion").textContent = questions[counter].question;
-    for (var i =0; i < questions[counter].choices.length; i++) {
+    for (var i = 0; i < questions[counter].choices.length; i++) {
         var currButton = document.getElementById("choice" + (i + 1));
         console.log(currButton)
         currButton.textContent = questions[counter].choices[i];
@@ -66,50 +75,49 @@ function quizPlaying() {
 
 
     }
-    //display question & choices
-
 }
-
-function gameOver() {
-    //end timer if not  = 0
-    if(time !== 0) {
-        window.location.href = "highScore.html";
-    } else {
-        
-    }
-    window.location.href = "highScore.html";
-    //display time as score
-    //prompt user for initials
-    //move to high score page
-    //show reset/play again button
-    //if reset/play again return to quiz page
-
-}
-
-// function playAgain() {
-//     //show button on high score page
-//     //promt user to play again
-//     if (yes) {
-//         startQuiz.addEventListener("click", init);
-//         //return to quiz page
-//     }
-
-// }
 
 //checks choice to answer
 function checker(event) {
-    if(event.target.textContent !== questions[counter].answer) {
-        alert("you're wrong");
+    if (event.target.textContent !== questions[counter].answer) {
         time = time - 10;
     }
     counter++;
-    if(counter >= questions.length) {
+    if (counter >= questions.length) {
         gameOver()
     } else {
-    quizPlaying();
+        quizPlaying();
     }
 }
 
+//game over funciton
+function gameOver() {
+    //end timer if not  = 0
+    window.location.href = "highScore.html";
+    if (time !== 0) {
+        score.innerHTML = "Score: 0";
+        addScore();
+    } else {
+        score.innerHTML = "Score: " + time;
+        addScore();
+    }
+}
+//add initials with score
+function addScore() {
+    var player = {
+        newScore: time,
+        playerInitials: initials.value.trim()
+    }
+    localStorage.setItem("player", JSON.stringify(player));
+}
+
+//return to main page and play again
+function playAgain(event) {
+    window.location.href = "index.html"
+    startQuiz.addEventListener("click", init);
+}
+
+//starts the game
 function init() {
     countDown();
     quizPlaying();
@@ -117,4 +125,4 @@ function init() {
 
 //event listeners
 startQuiz.addEventListener("click", init);
-//resetQuiz.addEventListener("click", playAgain);
+resetQuiz.addEventListener("click", playAgain);
