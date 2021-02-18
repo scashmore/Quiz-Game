@@ -69,6 +69,39 @@ function quizPlaying() {
     for (questions[i].choices) {
 
     }
+    //display question & choices
+
+    //compare choice with answer
+    if () {
+
+    } else {
+        //Idea, but I think there is another way
+        time = time - 10;
+    }
+    if (time >= 1) {
+        //next question
+    } else {
+        //game over function
+    }
+
+}
+
+function gameOver() {
+    //end timer if not  = 0
+    //display time as score
+    //prompt user for initials
+    //move to high score page
+    //show reset/play again button
+    //if reset/play again return to quiz page
+
+}
+
+function playAgain() {
+    //show button on high score page
+    //promt user to play again
+    if (yes) {
+        //return to quiz page
+    }
 
 }
 
@@ -76,3 +109,4 @@ function quizPlaying() {
 
 //event listeners
 startQuiz.addEventListener("click", countDown);
+resetQuiz.addEventListener("click", playAgain);
