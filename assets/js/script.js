@@ -25,14 +25,6 @@ var questions= [{
     choices: ["Luna", "Harvey", "Gracie", "Tom Nook"],
     answer: "Tom Nook"}
 ];
-// var answers = [
-//     ["Bells", "Rupees", "Gold", "Coins"],
-//     ["Isabelle", "Harriet", "Resetti", "Blathers"],
-//     ["Plane", "Subway", "Train", "Boat"],
-//     ["Skunks", "Hedgehogs", "Racoons", "Frogs"],
-//     ["K.K Slider", "Digby", "Goldie", "Booker"],
-//     ["Luna", "Harvey", "Gracie", "Tom Nook"]
-// ];
 
 // variable setup
 var time = 60;
@@ -40,6 +32,7 @@ var timer = document.getElementById("timer");
 var container = document.getElementById("box1");
 var startQuiz = document.getElementById("start");
 var resetQuiz = document.getElementById("reset");
+var counter = 0
 
 //functions
 
@@ -51,7 +44,7 @@ function countDown(duration) {
             time--;
         }
         else {
-            timer.textContent = "GAME OVER";
+            gameOver();
         }
     }, 1000);
 }
@@ -61,35 +54,30 @@ function quizPlaying() {
     var possibleAnswers;
     //remove start button while game is running
     startQuiz.removeEventListener("click", quizPlaying);
+    console.log("here");
+    //give choices for question[counter]
+    document.getElementById("showQuestion").textContent = questions[counter].question;
+    for (var i =0; i < questions[counter].choices.length; i++) {
+        var currButton = document.getElementById("choice" + (i + 1));
+        console.log(currButton)
+        currButton.textContent = questions[counter].choices[i];
+        currButton.classList.add("answer");
+        currButton.addEventListener("click", checker);
 
-    //resetting chioces each question
-    for (var i = 0; i < questions.length; i++) {
-        possibleAnswers = [];
-    }
-    //give choices for question i
-    //I need something else here. I'll come back
-    for (questions[i].choices) {
 
     }
     //display question & choices
-
-    //compare choice with answer
-    if (choicePicked !== answer) {
-
-    } else {
-        //Idea, but I think there is another way
-        time = time - 10;
-    }
-    if (time >= 1) {
-        //next question
-    } else {
-        //game over function
-    }
 
 }
 
 function gameOver() {
     //end timer if not  = 0
+    if(time !== 0) {
+        window.location.href = "highScore.html";
+    } else {
+        
+    }
+    window.location.href = "highScore.html";
     //display time as score
     //prompt user for initials
     //move to high score page
@@ -98,18 +86,35 @@ function gameOver() {
 
 }
 
-function playAgain() {
-    //show button on high score page
-    //promt user to play again
-    if (yes) {
-        startQuiz.addEventListener("click", quizPlaying);
-        //return to quiz page
-    }
+// function playAgain() {
+//     //show button on high score page
+//     //promt user to play again
+//     if (yes) {
+//         startQuiz.addEventListener("click", init);
+//         //return to quiz page
+//     }
 
+// }
+
+//checks choice to answer
+function checker(event) {
+    if(event.target.textContent !== questions[counter].answer) {
+        alert("you're wrong");
+        time = time - 10;
+    }
+    counter++;
+    if(counter >= questions.length) {
+        gameOver()
+    } else {
+    quizPlaying();
+    }
 }
 
-
+function init() {
+    countDown();
+    quizPlaying();
+}
 
 //event listeners
-startQuiz.addEventListener("click", countDown);
-resetQuiz.addEventListener("click", playAgain);
+startQuiz.addEventListener("click", init);
+//resetQuiz.addEventListener("click", playAgain);
