@@ -59,6 +59,8 @@ function countDown(duration) {
 function quizPlaying() {
     var questionOutput = [];
     var possibleAnswers;
+    //remove start button while game is running
+    startQuiz.removeEventListener("click", quizPlaying);
 
     //resetting chioces each question
     for (var i = 0; i < questions.length; i++) {
@@ -72,7 +74,7 @@ function quizPlaying() {
     //display question & choices
 
     //compare choice with answer
-    if () {
+    if (choicePicked !== answer) {
 
     } else {
         //Idea, but I think there is another way
@@ -100,6 +102,7 @@ function playAgain() {
     //show button on high score page
     //promt user to play again
     if (yes) {
+        startQuiz.addEventListener("click", quizPlaying);
         //return to quiz page
     }
 
