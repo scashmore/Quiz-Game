@@ -40,7 +40,7 @@ var startQuiz = document.getElementById("start");
 var resetQuiz = document.getElementById("reset");
 var score = document.getElementById("score");
 var counter = 0
-var initials = document.getElementById("initials")
+var initials = document.querySelector("#initials");
 
 //functions
 
@@ -104,15 +104,20 @@ function gameOver() {
 }
 //add initials with score
 function addScore() {
-    var player = {
-        newScore: time,
-        playerInitials: initials.value.trim()
-    }
-    localStorage.setItem("player", JSON.stringify(player));
+    addEventListener("keyup", function (event) {
+        if (event.keyCode === 13) {
+            initials.event.preventDefault();
+            var player = {
+                newScore: time,
+                playerInitials: initials.value.trim()
+            }
+            localStorage.setItem("player", JSON.stringify(player));
+        }
+    });
 }
 
 //return to main page and play again
-function playAgain(event) {
+function playAgain() {
     window.location.href = "index.html"
     startQuiz.addEventListener("click", init);
 }
