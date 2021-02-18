@@ -1,4 +1,4 @@
-//Array of question and answers
+//Array of question, chioces, and answers
 var questions= [{
 
     question: "What currecny is used in Animal Crossing?",
@@ -42,6 +42,8 @@ var startQuiz = document.getElementById("start");
 var resetQuiz = document.getElementById("reset");
 
 //functions
+
+//timer function
 function countDown(duration) {
     setInterval(function () {
         if (time >= 1) {
@@ -49,9 +51,25 @@ function countDown(duration) {
             time--;
         }
         else {
-            timer.textContent = "Time: " + time + " GAME OVER";
+            timer.textContent = "GAME OVER";
         }
     }, 1000);
+}
+
+function quizPlaying() {
+    var questionOutput = [];
+    var possibleAnswers;
+
+    //resetting chioces each question
+    for (var i = 0; i < questions.length; i++) {
+        possibleAnswers = [];
+    }
+    //give choices for question i
+    //I need something else here. I'll come back
+    for (questions[i].choices) {
+
+    }
+
 }
 
 
