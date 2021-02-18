@@ -10,10 +10,10 @@
 </head>
 <body>
     <h1>Animal Crossing Quiz!</h1>
-    <h2 class="timer" id="timer"></h2>
+    <h2 class="timer" id="timer" style="display: block;">Time: 60 seconds left</h2>
     <button class="start" id="start">Start Quiz</button>
-    <button class="reset" id="reset">Play Again?</button>
-    <section class="box1" id="box1">
+    <button class="reset" id="reset" style="display: none;">Play Again?</button>
+    <section class="box1" id="box1" style="display: none;">
         <div id="showQuestion"></div>
 
         <button id="choice1"></button>
@@ -21,6 +21,14 @@
         <button id="choice3"></button>
         <button id="choice4"></button>
     </section> 
+    <section class="box3" id="box3" style="display: none;">
+        <h1 id="score"></h1>
+        <form id="form">
+            <label for="initials">Initials Here!</label>
+            <input type="text" id="initials">
+            <input type="submit" value="submit">
+        </form> 
+    </section>
     <script src="assets/js/script.js"></script>
 </body>
 </html>

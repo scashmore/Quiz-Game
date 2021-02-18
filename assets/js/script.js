@@ -64,7 +64,9 @@ function quizPlaying() {
     //remove start button while game is running
     startQuiz.removeEventListener("click", quizPlaying);
     console.log("here");
+    document.getElementById("start").style.display = "none";
     //give choices for question[counter]
+    document.getElementById("box1").style.display = "block";
     document.getElementById("showQuestion").textContent = questions[counter].question;
     for (var i = 0; i < questions[counter].choices.length; i++) {
         var currButton = document.getElementById("choice" + (i + 1));
@@ -92,28 +94,20 @@ function checker(event) {
 
 //game over funciton
 function gameOver() {
+    document.getElementById("box1").style.display = "none";
+    document.getElementById("box3").style.display = "block";
+    document.getElementById("timer").style.display = "none";
     //end timer if not  = 0
-    window.location.href = "highScore.html";
-    if (time !== 0) {
-        score.innerHTML = "Score: 0";
+    if (time === 0) {
+        var addTime = document.getElementById("score").textContent = "Score: 0";
+       
         addScore();
     } else {
-        score.innerHTML = "Score: " + time;
+        var addTime = document.getElementById("score").textContent = "Score: " + time;
+        
         addScore();
     }
-}
-//add initials with score
-function addScore() {
-    addEventListener("keyup", function (event) {
-        if (event.keyCode === 13) {
-            initials.event.preventDefault();
-            var player = {
-                newScore: time,
-                playerInitials: initials.value.trim()
-            }
-            localStorage.setItem("player", JSON.stringify(player));
-        }
-    });
+    
 }
 
 //return to main page and play again
@@ -131,3 +125,16 @@ function init() {
 //event listeners
 startQuiz.addEventListener("click", init);
 resetQuiz.addEventListener("click", playAgain);
+//add initials with score
+document.querySelector("#form").addEventListener("submit", function () {
+    event.preventDefault();
+    
+        var player = {
+            newScore: time,
+            playerInitials: initials.value.trim()
+        }
+        localStorage.setItem("player", JSON.stringify(player));
+        window.location.href = "highScore.html"
+        var getScores = JSON.parse(localStorage.getItem("player"));
+        document.querySelector("#showScores").innerHTML = getScores;
+});
