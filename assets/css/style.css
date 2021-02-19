@@ -58,6 +58,7 @@ button, .submit{
     padding: 2%
 }
 .showScores {
+    display: flex;
     justify-self: center;
     border-top: green;
     border-top-style: dashed;

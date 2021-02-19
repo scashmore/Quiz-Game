@@ -126,16 +126,17 @@ resetQuiz.addEventListener("click", playAgain);
 //add initials with score
 document.querySelector("#form").addEventListener("submit", function (event) {
     event.preventDefault();
-    
-        var player = {
+        var showScores = document.getElementById("showScores");
+            showScores.style.display = "flex";
+        var entry = document.createElement('li');
+        var playerS = {
             Score: time,
             Initials: initials.value.trim()
-        }
-        var showScores = document.getElementById("showScores")
-        var entry = document.getElementById("showScores").createElement("li");
-        entry.appendChild(document.createTextNode(getScores));
+        }.value
+        entry.appendChild(document.createTextNode("playerS"));
+        console.log(entry);
         showScores.appendChild(entry);
-        localStorage.setItem("player", JSON.stringify(player));
+        localStorage.setItem("playerS", JSON.stringify(playerS));
         window.location.href = "highScore.html";
 });
 
