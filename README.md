@@ -3,7 +3,7 @@
  ##About
 The website can be found here: https://scashmore.github.io/Quiz-Game/
 
-![Image](images/whole.PNG)
+![Image](assets/css/images/whole.PNG)
 
  This website is desgined for the user to test their Animal Crossing knowledge! By selecting the start button, the user will begin a quiz! After reading each question, the user must answer the questions correctly. But, if that wasn't enough, the user is being timed! And wrong answers will subtract ten seconds from the remaining time limit!
  
