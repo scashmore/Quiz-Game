@@ -5,12 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>highScore</title>
+    <link rel="stylesheet" href="assets/css/reset.css"></link>
+    <link rel="stylesheet" href="assets/css/style.css"></link>
 </head>
 <body>
+    <form id="form" style="display: none;"></form>
+    <button class="start" id="start" style="display: none;">Start Quiz</button>    
+    <h1>High Scores</h1>
     <section id="box2">
-        <form id="form" style="display: none;"></form>
-        <div id="showScores" style="display: block;"></div>
-        <button class="start" id="start" style="display: none;">Start Quiz</button>    
+        <div style="display: flex;">
+        <ol id="showScores">
+
+        </ol>
+        </div>
         <button class="reset" id="reset">Play Again?</button>
     </section>
     <script src="assets/js/script.js"></script>

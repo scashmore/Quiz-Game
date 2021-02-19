@@ -66,7 +66,7 @@ function quizPlaying() {
     console.log("here");
     document.getElementById("start").style.display = "none";
     //give choices for question[counter]
-    document.getElementById("box1").style.display = "block";
+    document.getElementById("box1").style.display = "flex";
     document.getElementById("showQuestion").textContent = questions[counter].question;
     for (var i = 0; i < questions[counter].choices.length; i++) {
         var currButton = document.getElementById("choice" + (i + 1));
@@ -95,17 +95,15 @@ function checker(event) {
 //game over funciton
 function gameOver() {
     document.getElementById("box1").style.display = "none";
-    document.getElementById("box3").style.display = "block";
+    document.getElementById("box3").style.display = "flex";
     document.getElementById("timer").style.display = "none";
     //end timer if not  = 0
     if (time === 0) {
         var addTime = document.getElementById("score").textContent = "Score: 0";
        
-        addScore();
     } else {
         var addTime = document.getElementById("score").textContent = "Score: " + time;
-        
-        addScore();
+
     }
     
 }
@@ -126,15 +124,18 @@ function init() {
 startQuiz.addEventListener("click", init);
 resetQuiz.addEventListener("click", playAgain);
 //add initials with score
-document.querySelector("#form").addEventListener("submit", function () {
+document.querySelector("#form").addEventListener("submit", function (event) {
     event.preventDefault();
     
         var player = {
-            newScore: time,
-            playerInitials: initials.value.trim()
+            Score: time,
+            Initials: initials.value.trim()
         }
+        var showScores = document.getElementById("showScores")
+        var entry = document.getElementById("showScores").createElement("li");
+        entry.appendChild(document.createTextNode(getScores));
+        showScores.appendChild(entry);
         localStorage.setItem("player", JSON.stringify(player));
-        window.location.href = "highScore.html"
-        var getScores = JSON.parse(localStorage.getItem("player"));
-        document.querySelector("#showScores").innerHTML = getScores;
+        window.location.href = "highScore.html";
 });
+

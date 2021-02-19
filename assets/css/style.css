@@ -1,8 +1,77 @@
 @font-face {
     font-family: animal;
-    src: url("");
+    src: url("fonts/fink-heavy.ttf") format('ttf'), url('fonts/FinkHeavy.woff2') format('woff2'),
+    url("fonts/FinkHeavy.woff") format('woff');;
 }
 
-/* h1 {
+body {
+    background-image: url("images/background.jpg");
+    font-family: "animal";
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: goldenrod;
+    font-size: 60px;
+    margin: 2%;
+    padding-top: 2%;
+    text-shadow: black 2px 2px 2px;
+}
+h1 {
+    padding: 2%;
+}
+h2{
+    margin-bottom: 3%;
+    border-bottom: green;
+    border-width: 5px;
+    border-bottom-style: dashed;
+}
+button, .submit{
+    background-color: green;
+    border-color: green;
+    border-radius: 15%;
+    color: goldenrod;
     font-family: 'animal';
-} */
+    font-size: 20px;
+    margin-bottom: 1%;
+}
+.box1{
+    display: flex;
+    flex-direction: column;
+    min-width: 80vw;
+    max-width: 80vw;
+}
+#showQuestion {
+    font-size: 45px;
+    margin-bottom: 2%;
+    min-width: 80vw;
+    max-width: 80vw;
+}
+#box2{
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    border-top: green;
+    border-top-style: dashed;
+    border-width: 5px;
+    margin: 5%;
+    padding: 2%
+}
+.showScores {
+    justify-self: center;
+    border-top: green;
+    border-top-style: dashed;
+    border-width: 5px;
+    min-height: 10vh;
+    margin: 5%;
+    padding: 2%
+
+}
+.box3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.initials {
+    font-size: 30px;
+}
